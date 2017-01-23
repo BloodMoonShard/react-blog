@@ -14,3 +14,17 @@ export function addNew(data) {
     };
 }
 
+export function update(data){
+    return {
+        type: types.UPDATE,
+        data
+    }
+}
+
+export function fetch(data){
+    return {
+        type: types.FETCH,
+        data
+    }
+}
+

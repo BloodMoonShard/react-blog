@@ -1,13 +1,15 @@
-import { createStore } from 'redux';
-import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import {createStore, combineReducers} from 'redux'
+import {routerReducer as routing} from 'react-router-redux'
+import {articles} from '../reducers'
 
-export default function configureStore(initialState) {
-    const store = createStore(
-        rootReducer,
-        initialState,
-        DevTools.instrument()
-    );
+const rootReducer = combineReducers({
+    articles,
+    routing
+})
 
-    return store;
-}
+const configureStore = () => createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export default configureStore

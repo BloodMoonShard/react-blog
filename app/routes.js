@@ -9,6 +9,6 @@ export default (
 	<Route path="/" component={Layout}>
 		<IndexRoute component={Home} />
 		<Route path="/add" component={Formblog} />
-        <Route path="/edit/:id" component={Formblog} />
+        <Route path="/edit" component={Formblog} />
     </Route>
 );
