@@ -23,8 +23,6 @@ const initialState = iList([
 
 export const articles = (state = initialState, action) => {
     switch (action.type) {
-        case types.FETCH:
-            return state.articles.toJS()
         case types.UPDATE:
             const maxId = _.max(_.map(state.toJS(), (article)=>{
                 return article.id
@@ -34,6 +32,8 @@ export const articles = (state = initialState, action) => {
                 return state.push(action.data)
             }
             return state.setIn(state.findIndex((item)=>item.id === action.data.id).toString(), action.data)
+        case types.REMOVE:
+            return state.deleteIn(state.findIndex((item)=>item.id === action.id).toString())
         default:
             return state
     }
