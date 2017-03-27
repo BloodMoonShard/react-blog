@@ -1,15 +1,23 @@
-import {createStore, combineReducers} from 'redux'
+import {compose, createStore, applyMiddleware, combineReducers} from 'redux'
 import {routerReducer as routing} from 'react-router-redux'
-import {articles} from '../reducers'
+import thunk from 'redux-thunk'
+import {users} from '../reducers'
+import persistState from 'redux-localstorage'
+
+
+const enhancer = compose(
+    applyMiddleware(thunk),
+    persistState(),
+)
 
 const rootReducer = combineReducers({
-    articles,
+    users,
     routing
 })
 
 const configureStore = () => createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    enhancer
 )
 
 export default configureStore

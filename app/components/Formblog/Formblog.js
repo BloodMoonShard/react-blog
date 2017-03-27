@@ -60,7 +60,7 @@ export class FormblogView extends React.Component {
 export const Formblog = connect(
     function mapStateToProps(state, props) {
         if (!_.isNil(props.location.query.id)) {
-            const article = state.articles.find((item) => item.id === props.location.query.id)
+            const article = state.users.find((item) => item.id === props.location.query.id)
             return {
                 title: article.title,
                 description: article.description

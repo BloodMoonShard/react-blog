@@ -9,14 +9,19 @@ import Confirm from 'react-confirm-bootstrap'
 class HomeView extends React.Component {
 
     static propTypes = {
-        articles: React.PropTypes.array,
+        users: React.PropTypes.array,
         _onRemove: React.PropTypes.func
     }
+    //FIO
+    //Data born
+    //Address
+    //City
+    //Phone
 
     render() {
         return <div>
             {
-                _.map(this.props.articles, (article, key) => {
+                _.map(this.props.users, (article, key) => {
                     return (
                         <Panel key={key}>
                             <Col md={10}>
@@ -51,8 +56,9 @@ class HomeView extends React.Component {
 
 export const Home = connect(
     (state) => {
+        console.log(state)
         return {
-            articles: state.articles.toJS() || []
+            users: state.users || []
         }
     }
     ,
